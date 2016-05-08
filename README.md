@@ -16,3 +16,7 @@ The data includes the Mac adress of the Smartphone or Laptop and the SSID it sea
 You need a running Python 2 enviroment with pyshark installed over pip. And a working tshark that can be called as well as the following cli-tools: iw, ip link.
 
 By all means, this tool isnt meant to be used to spy it is only intended as a demonstration and you should destroy all collected data immediatly
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/panslothda/wifi-shredder/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
