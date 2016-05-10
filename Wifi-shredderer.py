@@ -2,6 +2,7 @@
 import os
 import time
 import pyshark
+import cups
 from threading import Thread
 
 
@@ -59,11 +60,6 @@ def endless_print():
 
 
 """
-defines which Packages should be captured and on which Interface
-"""
-capture = pyshark.LiveCapture('mon0', display_filter='wlan.fc.type_subtype eq 4 && !wlan_mgt.ssid eq 0')
-
-"""
 asks user if he needs to setup mon0 or if he already has a mon0 in place in type monitor
 """
 print("If you need to setup mon0 in monitor mode type in 2 else 1")
@@ -72,6 +68,12 @@ print(need_setup)
 if need_setup == 2:
     print(setup_mon0())
 
+
+"""
+defines which Packages should be captured and on which Interface
+"""
+capture = pyshark.LiveCapture('mon0', display_filter='wlan.fc.type_subtype eq 4 && !wlan_mgt.ssid eq 0')
+
 """
 for every Package that goes trough the above defined filter in capture print the Sentence "Found following stuff to print"
 and on the following Lines it gets the Mac and the SSID as values out of the made dictionary
@@ -79,9 +81,15 @@ and on the following Lines it gets the Mac and the SSID as values out of the mad
 for packet in capture.sniff_continuously():
     print('Found following stuff to print:')
     tmp = packet.__dict__
+    mac_address = (tmp['layers'][2].get_field_value("ta"))
+    ssid_name = (tmp['layers'][3].get_field_value("ssid"))
+    print("Mac_ssid")
+    print(mac_address)
+    print(ssid_name)
+    """
     print(tmp['layers'][2].get_field_value("ta"))
     print(tmp['layers'][3].get_field_value("ssid"))
-
+    """
 """
 yet to be made thread to print the output out of irl printer
 """
