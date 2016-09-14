@@ -1,5 +1,5 @@
 ## Wifi-shredder
-Project of CCC HK for Crypto Party
+This project was developed for the Wikitopia 2016 Cryptoparty organised by Dimsumlabs and CCC HK. It's based on the [WiFi Shredder](https://www.youtube.com/watch?v=gfmrWbI4F_A) artwork, exhibited at Microwave Festival 2015 by [Manolis Perrakis](http://www.manolis.xyz/portfolio) and [Lio Lunesu](https://github.com/lionello)
 
 ## What is the meaning of this Project?
 
