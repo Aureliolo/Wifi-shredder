@@ -18,3 +18,6 @@ Please note that currently there isn't a implemented way to actually print it si
 You need a running Python 2 enviroment with pyshark and tabulate installed over pip. And a working tshark that can be called as well as the following cli-tools: iw, ip link.
 
 By all means, this tool isn't meant to be used to spy, it is only intended as a demonstration and you should destroy all collected data immediatly!
+
+
+PS: Thx to Leviathan (https://github.com/leviathanch) for some help :)
