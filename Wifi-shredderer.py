@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 import os
+from collections import defaultdict
 import time
 import pyshark
 import sys
@@ -71,6 +72,17 @@ Creates a empty Dictionary where the Mac and SSID is gonna be filled in
 """
 mac_ssid = {}
 
+max_len=18
+#def myTabulate(data):
+ #   ret=""
+  #  for i in range(0,len(data)):
+   #     ret+'|\t'
+    #    ret+data[i][0]
+#        ret+'\t|\t'
+    #    ret+data[i][0]
+    #    ret+'\t|\t'
+    #return ret
+
 """
 for every Package that goes trough the above defined filter in capture this for loop takes the ssid and the mac adress out of the packet
 and then checks by calling the function check_if_existing if this combination already exists in the dictionary and if not it adds it and
@@ -82,8 +94,13 @@ for packet in capture.sniff_continuously():
     ssid_name = (tmp['layers'][3].get_field_value("ssid"))
     check = check_if_existing(mac_address, ssid_name)
     if check == 0:
-        mac_ssid[mac_address] = ssid_name
+        mac_ssid.setdefault(mac_address, set()).add(ssid_name)
+        # mac_ssid[mac_address] = ssid_name
         print(os.popen('clear').read())
         headers = ['Mac_Adress', 'SSID']
-        data = sorted(mac_ssid.items(), key = itemgetter(1, 0))
-        print(tabulate(data, headers=headers, tablefmt="fancy_grid"))
+        data = sorted(mac_ssid.items(), key = itemgetter(0, 1))
+       # if len(data) > max_len:
+
+        print(tabulate(data, headers=headers, tablefmt="grid"))
+        #else:
+         #   print(myTabulate(data))
